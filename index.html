@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>HZSK Help Center</title>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.min.css" />
+        <style type="text/css">
+         .clickable{ cursor: pointer; }         
+         .panel-heading span { margin-top: -20px; font-size: 15px; background-color: #fafafa; }
+         .nav-pills > li.active > a, 
+         .nav-pills > li.active > a:focus, 
+         .nav-pills > li.active > a:hover { background-color: slategray; }
+         a{ color: #00aa00; }
+         a[data-toggle=tab]{ color: slategray;}
+         img{ border: 1px solid #bbb;border-radius: 5px;box-shadow: 2px 2px 2px #bbb; }
+         
+         /* language control (using body's lang attribute) */
+         .language-picker{ float:right;margin-right:20px; }
+         .language-picker img { cursor:pointer; }
+         body[lang|="de"] *[lang|="en"] { display: none; }
+         body[lang|="en"] *[lang|="de"] { display: none; }
+         body:not([lang]) *[lang|="de"] { font-size:0.7em; color:#bbb; }
+         body:not([lang]) *[lang|="de"]:before { content: "("; }
+         body:not([lang]) *[lang|="de"]:after { content: ")"; }
+         span[lang] { background-color:transparent;  }         
+        </style>
+    </head>
+    <body>
+        <h3 style="margin: 15px;">
+            <span lang="en" xml:lang="en">HZSK Help Center</span>
+            <span lang="de" xml:lang="de">HZSK Hilfecenter</span>
+        </h3>
+        <div class="language-picker">
+            <img onclick="javascript:document.querySelector('body').setAttribute('lang', 'en');" title="English" alt="Icon: English flag" src="data:image/png;base64,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"/>
+            <img onclick="javascript:document.querySelector('body').setAttribute('lang', 'de');" title="Deutsch" alt="Icon: Deutsche Flagge" src="data:image/png;base64,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"/>
+        </div>
+        <div class="panel-heading">
+            <ul class="nav nav-pills">
+                <li role="presentation" class="active">
+                    <a href="#access" data-toggle="tab">
+                        <span lang="en" xml:lang="en">Access to corpora</span>
+                        <span lang="de" xml:lang="de">Zugang zu Korpora</span>
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#usage" data-toggle="tab">
+                        <span lang="en" xml:lang="en">Usage of corpora</span>
+                        <span lang="de" xml:lang="de">Verwendung von Korpora</span>
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#help" data-toggle="tab">
+                        <span lang="en" xml:lang="en">Further help</span>
+                        <span lang="de" xml:lang="de">Weitere Hilfe</span>
+                    </a>
+                </li>
+                <!--<li role="presentation"><a href="#exmaralda" data-toggle="tab">EXMARaLDA</a></li>-->
+                <li role="presentation">
+                    <a href="#contact" data-toggle="tab">                        
+                        <span lang="en" xml:lang="en">Contact</span>
+                        <span lang="de" xml:lang="de">Kontakt</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="panel-body">  
+            <div class="tab-content">  
+                <!-- Tab: Access -->
+                <div class="tab-pane fade active in" id="access">
+                    <h1 style="display:none;">
+                        <span lang="en" xml:lang="en">Access to corpora</span>
+                        <span lang="de" xml:lang="de">Zugang zu Korpora</span>
+                    </h1>
+                
+                  <div class="panel panel-default" id="find-corpus">
+                    <div class="panel-heading clickable panel-collapsed">
+                        <h3 class="panel-title">
+                            <span lang="en" xml:lang="en">Find a corpus in the digital repository</span>
+                            <span lang="de" xml:lang="de">Ein Korpus im digitalen Repositorium finden</span>
+                        </h3>
+                        <span class="pull-right"><i class="glyphicon glyphicon-chevron-down"></i></span>
+                    </div>
+                    <div class="panel-body" style="display:none;"> 
+		               <p lang="en" xml:lang="en">
+                          The <b>digital repository</b> (also referred to as "HZSK Repository") can be searched using search words or different filters.
+                          Each corpus in the repository is shown with a short description in the search results.
+                       </p>
+                       <p lang="de" xml:lang="de">
+                           Das <b>digitale Repositorium</b> (auch genannt "HZSK Repository") kann mit Hilfe von Volltext und verschiedenen Filtern durchsucht werden.
+                           Jedes Korpus im Repositorium wird mit einer kurzen Beschreibung in den Suchresultaten aufgeführt.
+                       </p>
+                       <p>
+                          <img src="images/hzsk-repository-corpus-box.png" alt="Preview boxes for corpora on HZSK Repository start page"/>
+                       </p>
+                        <p lang="en" xml:lang="en">
+                          The search panel allows you to filter the corpora by type, license, modality, language, and keywords.
+                          Simply click on the filters and combine features from the corpora to find what you are interested in.
+                          This way you can for instance find all <a target="_blank" href="https://corpora.uni-hamburg.de/hzsk/en/repository-search?textQuery=&amp;facetQuery=subjectLanguageNameOriginal%3A%22Spanish%22+AND+keywordOriginal%3A%22child%20bilingualism%22">corpora about "child bilingualism" in which Spanish is spoken</a>.
+                        </p>
+                        <p lang="de" xml:lang="de">
+                            Das Suchpanel ermöglicht das Filtern von Korpora anhand deren Typ, der Lizenz, Modalität, Sprache und Schlüsselwörtern.
+                            Durch Auswahl der Filter lassen sich die verschiedenen Eigenschaften der Korpora kombinieren, und so interessante Ressourcen finden.
+                            Auf diese Weise können z.B. alle <a target="_blank" href="https://corpora.uni-hamburg.de/hzsk/de/repository-search?textQuery=&amp;facetQuery=subjectLanguageNameOriginal%3A%22Spanish%22+AND+keywordOriginal%3A%22child%20bilingualism%22">Korpora zu "child bilingualism", in denen Spanisch gesprochen wird</a>, gefunden werden.
+                        </p>
+                        <p lang="en" xml:lang="en">
+                          To get <b>access</b> to the files of a corpus, you have to <b>check the license restrictions</b> and follow the steps below.
+                        </p>
+                        <p lang="de" xml:lang="de">
+                            Um <b>Zugang</b> zu den Dateien eines Korpus zu erhalten, müssen Sie zunächst <b>die Lizenzbedingungen prüfen</b> und die folgenden Schritte befolgen.
+                        </p>
+                        <p lang="en" xml:lang="en">
+                          Note, that there are also the corpora of the 
+                          <a target="_blank" href="https://corpora.uni-hamburg.de/repository/collection:sfb632">SFB 632 "Information Structure"</a> 
+                          at the HZSK, for which access can only be granted on a personal basis by contacting us via 
+                          <a target="_blank" href="http://support.clarin-d.de/mail/?queue=HZSK&amp;lang=en">the Helpdesk</a>.
+                        </p>
+                        <p lang="de" xml:lang="de">
+                            Beachten Sie, dass der Zugang zu den am HZSK vorgehaltenen 
+                            <a target="_blank" href="https://corpora.uni-hamburg.de/repository/collection:sfb632">Korpora des SFB 632 "Informationsstruktur"</a> 
+                            nur auf persönliche Anfrage an den 
+                            <a target="_blank" href="http://support.clarin-d.de/mail/?queue=HZSK&amp;lang=de">Helpdesk</a> freigeschaltet werden kann.
+                        </p>
+	                </div>
+                    </div>
+                   
+                    <div class="panel panel-default" id="license-restrictions">
+                        <div class="panel-heading clickable panel-collapsed">
+                            <h3 class="panel-title">                                
+                                <span lang="en" xml:lang="en">Check the license restrictions</span>
+                                <span lang="de" xml:lang="de">Lizenzbedingungen ansehen</span>
+                            </h3>
+                            <span class="pull-right"><i class="glyphicon glyphicon-chevron-down"></i></span>
+                        </div>
+                        <div class="panel-body" style="display:none;">
+                            <p lang="en" xml:lang="en">
+                               The <b>license restriction</b> a corpus comes with defines the way of getting access to it. To find out which license a corpus comes with,
+                                go to the overview page of the <a target="_blank" href="http://corpora.uni-hamburg.de/repository"> digital repository</a> and check which 
+                                license is specified for the chosen corpus.
+                            </p>
+                            <p lang="de" xml:lang="de">
+                                Die <b>Lizenzbedingungen</b> eines Korpus enthalten Informationen darüber, wie der Zugang zum jeweiligen Korpus geregelt wird. 
+                                Um herauszufinden, welche Lizenz ein Korpus hat, gehen Sie auf die Übersichtsseite des 
+                                <a target="_blank" href="http://corpora.uni-hamburg.de/repository">digitalen Repositoriums</a> und prüfen Sie hier die Angabe zur Lizenz des gewünschten Korpus.
+                            </p>
+                            <p lang="en" xml:lang="en">
+                                The possible licenses are HZSK-PUB, HZSK-ACA and HZSK-RES (further information concerning the licenses can be
+                                found here: <a target="_blank" href="http://corpora.uni-hamburg.de/hzsk/en/corpus-enquiries-licenses"
+                                >Levels of access restrictions for Language Resources at the HZSK</a>).
+                            </p>
+                            <p lang="de" xml:lang="de">
+                                Die möglichen Lizenzen sind (neben "freien" Lizenzen wie CC-BY o.ä.) HZSK-PUB, HZSK-ACA und HZSK-RES (weiterführende Informationen hierzu finden Sie auf der Seite 
+                                <a target="_blank" href="http://corpora.uni-hamburg.de/hzsk/de/korpusanfragen-lizenzen">Korpusanfragen und Lizenzen für Ressourcen am HZSK</a>).
+                            </p>
+                            <p lang="en" xml:lang="en">
+                               The following general access restrictions are attached to the licenses:
+                            </p>
+                            <p lang="de" xml:lang="de">
+                                Die folgenden generellen Zugangsbeschränkungen sind mit den genannten Lizenzen verbunden:
+                            </p>
+                            <ul lang="en" xml:lang="en">
+                               <li>HZSK-PUB: you do not have to sign in. Just click on the corpus and
+                                    open the "Sessions" tab. Then right-click on an entry and download the
+                                    files you need by choosing 'save link as'. You can proceed to the <a href="#usage">Usage of Corpora</a>.</li>
+                               <li>HZSK-ACA: you have to sign in via single sign-on as explained below.</li>
+                               <li>HZSK-RES: you have to sign in, like with the HZSK-ACA license, and additionally you have to
+                                    fill out a request form as explained below. </li>
+                            </ul>
+                            <ul lang="de" xml:lang="de">
+                                <li>HZSK-PUB: Login ist nicht erforderlich. Navigieren Sie auf die Korpusseite und öffnen Sie den Tab "Sessions". Per Rechtsklick und "Link speichern unter..."
+                                    lassen sich einzelne Dateien herunterladen. Weitere Informationen im Abschnitt "Verwendung von Korpora".</li>
+                                <li>HZSK-ACA: Login via Single sign-on erforderlich (s.u.).</li>
+                                <li>HZSK-RES: Login wie bei der HZSK-ACA Lizenz; zusätzlich ist ein Zugangsformular auszufüllen (s.u.).</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="panel panel-default" id="login">
+                        <div class="panel-heading clickable">
+                            <h3 class="panel-title">
+                                <span lang="en" xml:lang="en">Login / Single sign-on</span>
+                                <span lang="de" xml:lang="de">Login / Single sign-on</span>
+                                
+                            </h3>
+                            <span class="pull-right"><i
+                                    class="glyphicon glyphicon-chevron-up"></i></span>
+                        </div>
+                        <div class="panel-body">
+                            <p lang="en" xml:lang="en">
+                               There is a good chance that you can sign in directly with a valid <b>account from your research institution</b>, since many institutions already participate
+                               in the CLARIN trusted domain, which is a basic requirement.
+                            </p>
+                            <p lang="de" xml:lang="de">
+                                Wahrscheinlich verfügen Sie bereits über ein gültiges <b>Benutzerkonto Ihrer Institution</b>, mit dem Sie sich ohne Umwege anmelden können, da viele Institutionen Teil der "CLARIN trusted domain" 
+                                sind. Dieses ist eine grundlegende Voraussetzung für die Nutzung von Single sign-on.
+                            </p>
+                            <p lang="en" xml:lang="en">
+                               To sign in, click on the <a target="_blank" href="https://corpora.uni-hamburg.de/">Login button on the HZSK website</a> or follow this 
+                               <a target="_blank" href="https://corpora.uni-hamburg.de/hzsk/en/sso">link to the login page</a>, and choose "Single sign-on".
+                            </p>
+                            <p lang="de" xml:lang="de">
+                                Um sich anzumelden, klicken Sie auf den <a target="_blank" href="https://corpora.uni-hamburg.de/">Login-Button auf der HZSK Webseite</a> oder folgen Sie diesem 
+                                <a target="_blank" href="https://corpora.uni-hamburg.de/hzsk/de/sso">Link zur Login-Seite</a>, und wählen Sie "Single sign-on" aus.
+                            </p>
+                            <p lang="en" xml:lang="en">
+                               Search and choose your institution from the list and follow the directions to log in with your
+                               institutional user name and password. 
+                            </p>
+                            <p lang="de" xml:lang="de">
+                                Suchen Sie Ihre Institution über das Eingabefeld und wählen Sie sie aus der Liste aus. Danach folgen Sie den Anweisungen, um sich mit Ihrem
+                                existierenden Benutzernamen und Passwort auf der Loginseite Ihrer Institution anzumelden. 
+                            </p>
+                            <p>
+                              <img src="images/hzsk-repository-disco-juice.png" alt="Single sign-on page" />
+                            </p>
+                            <p lang="en" xml:lang="en">   
+                               Once you are successfully
+                               logged in you have access to the HZSK-ACA licensed corpora and you
+                               can download as described in <a href="#usage">Usage of Corpora</a>.
+                            </p>
+                            <p lang="de" xml:lang="de">   
+                                Sobald Sie sich erfolgreich angemeldet haben, werden Sie auf die HZSK-Webseite zurückgeleitet und erhalten automatisch Zugang zu den mit HZSK-ACA lizensierten Korpora (Voraussetzung ist, dass Sie von Ihrer Institution 
+                                als akademischer Benutzer geführt werden) und können Ressourcen ansehen und herunterladen (beschrieben in "Verwendung von Korpora").
+                            </p>
+                            <p lang="en" xml:lang="en">
+                               Please note: If your institution is not displayed in the list (i.e. it does not participate in the CLARIN trusted domain) or if the
+                               Single sign-on does not work for you anyway, you can use a <b>CLARIN account</b> to sign in, which you can 
+                               <a target="_blank" href="https://idm.clarin.eu/unitygw/pub#!registration-CLARIN%20Identity%20Registration" 
+                               title="Register a CLARIN account">register directly at CLARIN</a>.
+                            </p>
+                            <p lang="de" xml:lang="de">
+                                Beachten Sie: Falls Ihre Institution nicht in der Liste erscheint (d.h. falls sie nicht Teil der "CLARIN trusted domain" ist) oder falls das
+                                Single sign-on aus anderen Gründen für Sie nicht funktioniert, können Sie einen <b>CLARIN-Account</b> verwenden, um sich anzumelden. Diesen können Sie einfach
+                                <a target="_blank" href="https://idm.clarin.eu/unitygw/pub#!registration-CLARIN%20Identity%20Registration" 
+                                    title="Register a CLARIN account">direkt bei CLARIN registrieren</a>.
+                            </p>
+                            <p lang="en" xml:lang="en">
+                               Basically, we distinguish three different kinds of users:
+                            </p>
+                            <p lang="de" xml:lang="de">
+                                Im Allgemeinen unterscheiden wir drei Typen von Nutzern:
+                            </p>
+                            <ul lang="en" xml:lang="en">
+                               <li>Academic users (e.g. college students, researchers) receive an academic account, granting them access to all available corpora and tools.</li>
+                                <li>Non-affiliated researchers (e.g. independent researchers, teachers at high schools, citizen-scientists) receive a standard account, not granting them access to corpora and tools of which the provider has limited access to academic users.</li>
+                                <li>Users with commercial goals (e.g. dictionary publishers, translation agencies) in general cannot receive an account.</li>
+                            </ul>                            
+                            <ul lang="de" xml:lang="de">
+                                <li>Akademische Nutzer (z.B. Studenten, Wissenschaftler) erhalten einen akademischen Account, der Zugang zu allen entsprechend verfügbaren Korpora und Werkzeugen ermöglicht.</li>
+                                <li>
+                                    Nicht-affiliierte Wissenschaftler (z.B. unabhängige Wissenschaftler, Lehrer, Bürger-Wissenschaftler) erhalten einen Standard-Account, mit dem zwar kein direkter Zugang
+                                    zu den Ressourcen möglich ist, welcher aber individuell zusätzlich beantragt werden kann.
+                                </li>
+                                <li>Nutzer mit kommerziellen Absichten (z.B. Wörterbuchherausgeber, Übersetzungsagenturen) können leider keinen Account erhalten.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="panel panel-default" id="request-form">
+                        <div class="panel-heading clickable panel-collapsed">
+                            <h3 class="panel-title">
+                                <span lang="en" xml:lang="en">Request form</span>
+                                <span lang="de" xml:lang="de">Formular für Zugangsanfragen</span>
+                                
+                            </h3>
+                            <span class="pull-right"><i class="glyphicon glyphicon-chevron-down"></i></span>
+                        </div>
+                        <div class="panel-body" style="display:none;">
+                            <p lang="en" xml:lang="en">
+                              To get access to restricted corpora an <b>additional request form</b> must
+                              be filled out after signing in. The request form for a corpus can be
+                              found by clicking on the lock icon on the bottom of a search result after the sign-in. You can also find it by 
+                              clicking on the session tab of a restricted corpus. 
+ 			                  Choose the intended purpose of the use of this corpus and give a very detailed description of the
+                              planned use ("research" or "checking a hypothesis" will not be sufficient). 
+                              If and when the request form is accepted, you will get notified by email that the access is granted.
+                            </p>
+                            <p lang="de" xml:lang="de">
+                                Um Zugang zu geschützten Korpora zu erhalten, muss ein <b>zusätzliches Anfrageformular</b> ausgefüllt werden, das nach dem Einloggen aufgerufen werden kann. 
+                                Das Zugangsformular öffnet sich für angemeldete Nutzer durch einen Klick auf das "Geschlossenes-Schloss-Icon" an der Unterseite jedes Suchresultats. 
+                                Es ist außerdem zu finden in dem Tab "Sessions" auf der Übersichtsseite eines geschützten, noch nicht zugänglichen Korpus.
+                                Wählen Sie in dem Zugangsformular den Zweck der Verwendung aus und geben Sie eine möglichst detaillierte Beschreibung der geplanten Verwendung 
+                                ("Recherche" oder "Überprüfung einer Hypothese" genügen hier leider nicht).
+                                Sobald Ihre Korpusanfrage bearbeitet und akzeptiert wurde, erhalten Sie eine Benachrichtigung per E-Mail.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tab: Usage of corpora -->
+                <div class="tab-pane fade" id="usage">
+                    <h1 style="display:none;">
+                        <span lang="en" xml:lang="en">Usage of corpora</span>
+                        <span lang="de" xml:lang="de">Verwendung von Korpora</span>
+                    </h1>
+                    
+                    <div class="panel panel-default" id="corpus-overview">
+                        <div class="panel-heading clickable panel-collapsed">
+                            <h3 class="panel-title">
+                                <span lang="en" xml:lang="en">Corpus overview</span>
+                                <span lang="de" xml:lang="de">Korpusübersicht</span>
+                            </h3>
+                            <span class="pull-right"><i class="glyphicon glyphicon-chevron-down"></i></span>
+                        </div>
+                        <div class="panel-body" style="display:none;">
+                            <p lang="en" xml:lang="en">
+                              After you have browsed to a corpus you are interested in, a view containing different tabs is presented.
+                              Usually every corpus shows at least the tabs "Description", "Metadata" and "Sessions".
+                              There can also be an "Attached files" tab.
+                            </p>
+                            <p lang="de" xml:lang="de">
+                                Sobald Sie auf einer Korpusübersichtsseite angelangt sind, werden Ihnen veschiedene Tabs angezeigt.
+                                Normalerweise enthält eine Korpusübersichtsseite mind. die Tabs "Beschreibung", "Metadaten" und "Sessions".
+                                Zusätzlich kann z.B. ein Tab "Zugehörige Dateien" angezeigt werden.
+                            </p>
+                           <p>
+                              <img src="images/hzsk-repository-corpus-tabs.png" alt="Tabs on corpus page" />
+                           </p>
+                            <p lang="en" xml:lang="en">
+                              The "Description" tab normally contains some basic information about the corpus, and its layout, as well as a hint how to cite the corpus.  
+                            </p>
+                            <p lang="de" xml:lang="de">
+                                Der Tab "Beschreibung" beinhaltet normalerweise grundlegende Informationen zum Korpus, seinem grundlegenden Layout, und einen Hinweis wie das Korpus zu zitieren ist.  
+                            </p>
+                            <p lang="en" xml:lang="en">
+                              The "Metadata" tab shows an overview of the metadata about the corpus. However, additional metadata is available for the individual sessions
+                              of a corpus in the "Sessions" tab.
+                            </p>
+                            <p lang="de" xml:lang="de">
+                                Im Tab "Metadaten" wird eine allgemeine Übersicht zu den Metadaten des Korpus angezeigt. Zusätzliche Metadaten sind für die individuellen Sessions/Kommunikationen verfügbar
+                                im Tab "Sessions".
+                            </p>
+                            <p lang="en" xml:lang="en">
+                              The "Sessions" tab contains a list of all available (recording) sessions or communications (in EXMARaLDA language) that belong to the corpus,
+                              if you have access. Read on for information about the available files.
+                            </p>
+                            <p lang="de" xml:lang="de">
+                                Der Tab "Sessions" beinhaltet eine Liste aller verfügbaren (Aufnahme-)Sessions oder Kommunikationen (in EXMARaLDA-Terminologie), die zum Korpus gehören,
+                                Lesen Sie weiter für Informationen zu den verfügbaren Dateien.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default" id="available-files">
+                        <div class="panel-heading clickable">
+                            <h3 class="panel-title">
+                                <span lang="en" xml:lang="en">Available files</span>
+                                <span lang="de" xml:lang="de">Verfügbare Dateien</span>
+                            </h3>
+                            <span class="pull-right"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                        </div>
+                        <div class="panel-body">
+                            <p lang="en" xml:lang="en">
+                               The structure of the stored corpora is generally the same. The available files are usually stored in the <b>"Sessions"</b> tab. 
+                               All (recording) sessions or communications (in EXMARaLDA language), that belong to a corpus, can be found here.
+                            </p>
+                            <p lang="de" xml:lang="de">
+                                Die gespeicherten Korpora sind gleich strukturiert. Die verfügbaren Dateien sind normalerweise im Tab <b>"Sessions"</b> einzusehen. 
+                                Alle (Aufnahme-)Sessions oder Kommunikationen (in EXMARaLDA-Terminologie) eines Korpus sind hier zu finden.
+                            </p>
+                            <p lang="en" xml:lang="en">
+                               Details about each session are displayed when you click on the session title, and files available for download can be 
+                               found in the session overview under "Transcription formats", "Recordings", and "Metadata". 
+                               You can also view transcriptions online if you click a link under "Views".
+                            </p>
+                            <p lang="de" xml:lang="de">
+                                Details zu den einzelnen Sessions werden angezeigt, wenn Sie auf den Titel einer Session klicken. Die herunterladbaren Dateien sind 
+                                in der Sessionübersicht unter "Transcription formats", "Recordings", und "Metadata" zu finden. 
+                                Transkriptionen können auch online angesehen werden, indem Sie einen Link aus den "Views" öffnen.
+                            </p>
+                            <p lang="en" xml:lang="en">
+                              <img src="images/hzsk-repository-corpus-sessions.png" alt="Sessions on corpus page" />
+                            </p>
+                            <p lang="en" xml:lang="en"> 
+				                For some corpora, certain files can be downloaded from links directly in the "Descriptions" and "Attached files" tabs.
+                            </p>
+                            <p lang="de" xml:lang="de"> 
+                                Bei manchen Korpora werden bestimmte Dateien direkt in den Tabs "Beschreibung" und "Zugehörige Dateien" zum Download angeboten.
+                            </p>
+                            <p lang="en" xml:lang="en">
+				                If you choose a corpus you should check all the tabs for information and the files you want to download. Every spoken corpus 
+                                contains a .coma file, different transcription formats and corresponding audio files.
+                            </p>
+                            <p lang="de" xml:lang="de">
+                                Wenn Sie sich für ein Korpus interessieren, sollten Sie alle Tabs auf der Korpusübersichtsseite nach Informationen und herunterladbaren Dateien prüfen. 
+                                Jedes Korpus gesprochener Sprache enthält eine .coma-Datei, verschiedene Transkriptionsformate und in der Regel zugehörige Audiodateien.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="panel panel-default" id="work-with-files">
+                        <div class="panel-heading clickable panel-collapsed">
+                            <h3 class="panel-title">
+                                <span lang="en" xml:lang="en">How to save, open and analyze the files</span>
+                                <span lang="de" xml:lang="de">Speichern, Öffnen und Analysieren von Dateien</span>
+                            </h3>
+                            <span class="pull-right"><i class="glyphicon glyphicon-chevron-down"></i></span>
+                        </div>
+                        <div class="panel-body" style="display:none;">
+                            <p lang="en" xml:lang="en">
+                              After you got access to a corpus you can <b>download the files</b> under the "Session" and/or "Description" and "Attached files" tab. 
+			                  The "Description" tab usually specifies the files that are available. If you haven't worked with corpora before, it makes sense to download a .zip file first.
+                            </p>
+                            <p lang="de" xml:lang="de">
+                                Nachdem Sie Zugang zu einem Korpus erhalten haben, können Sie die <b>Dateien herunterladen</b>, die Sie in den Tabs "Sessions", "Beschreibung" und "Zugehörigen Dateien" finden. 
+                                Der Tab "Beschreibung" enthält in der Regel Informationen zu den verfügbaren Dateien. Falls Sie zuvor noch nicht mit Korpora gearbeitet haben, könnten Sie sich z.B. zuerst die .zip-Datei herunterladen.
+                            </p>
+                            <p lang="en" xml:lang="en">
+                              The corpora usually provide data formats for the most common transcribing programs, so you can download the files for the program you are most familiar with.
+                            </p>
+                            <p lang="de" xml:lang="de">
+                                Die Korpora enthalten normalerweise Datenformate für die gängigsten Transkriptionsprogramme, sodass Sie die Dateien für das von Ihnen favorisierte Programm herunterladen können.
+                            </p>
+                            <p lang="en" xml:lang="en">
+                              If you want to <b>search and analyze</b> a corpus, you can do this using the program 
+                              <a target="_blank" href="http://www.exmaralda.org/pdf/EXAKT_Manual.pdf">EXAKT</a> and the .coma file. Therefore, you need to download the coma file, all 
+                              corresponding transcriptions in the EXMARaLDA format and the audio files. Note, that the transcription and audio files need to be in the same folder as 
+                              (or a subordinated of) the .coma file(see the <a target="_blank" href="http://www.exmaralda.org/pdf/Coma_Manual.pdf">Coma Documentation</a>).
+                            </p>
+                            <p lang="de" xml:lang="de">
+                                Falls Sie ein Korpus <b>durchsuchen und analysieren</b> möchten, können Sie hierzu mit dem Programm 
+                                <a target="_blank" href="http://www.exmaralda.org/pdf/EXAKT_Manual.pdf">EXAKT</a> die .coma-Datei öffnen. Zuerst laden Sie hierzu die coma-Datei und alle
+                                zugehörigen Transkriptionen im EXMARaLDA-Format (EXB) sowie die Audiodateien herunter. Bitte beachten Sie, dass die Transkriptionen und Audiodateien
+                                im gleichen Verzeichnis oder einem Unterverzeichnis der .coma-Datei liegen müssen (vgl. 
+                                <a target="_blank" href="http://www.exmaralda.org/pdf/Coma_Manual.pdf">Coma Dokumentation</a>).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tab: Further help -->
+                <div class="tab-pane fade" id="help">
+                    <h1 style="display:none;">
+                        <span lang="en" xml:lang="en">Further help</span>
+                        <span lang="de" xml:lang="de">Weitere Hilfe</span>
+                    </h1>
+                    
+                    <div class="panel panel-default" id="login-problems">
+                        <div class="panel-heading clickable">
+                            <h3 class="panel-title">
+                                <span lang="en" xml:lang="en">Problems with the login</span>
+                                <span lang="de" xml:lang="de">Probleme mit dem Login</span>
+                            </h3>
+                            <span class="pull-right"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                        </div>
+                        <div class="panel-body">
+                            <p lang="en" xml:lang="en">
+                               If the <b>single sign-on</b> does not work for you, you can use a CLARIN account to sign in, which you can
+                               <a target="_blank" href="https://idm.clarin.eu/unitygw/pub#!registration-CLARIN%20Identity%20Registration"
+                               title="Register a CLARIN account">register directly at CLARIN</a>.
+                            </p>
+                            <p lang="de" xml:lang="de">
+                                Falls das <b>Single sign-on</b> für Sie nicht funktioniert, können Sie ein CLARIN-Benutzerkonto verwenden, um sich einzuloggen.
+                                Ein CLARIN-Benutzkonto können Sie 
+                                <a target="_blank" href="https://idm.clarin.eu/unitygw/pub#!registration-CLARIN%20Identity%20Registration"
+                                    title="Registrierung bei CLARIN">direkt bei CLARIN registrieren</a>.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="panel panel-default" id="other-problems">
+                        <div class="panel-heading clickable">
+                            <h3 class="panel-title">
+                                <span lang="en" xml:lang="en">Other problems</span>
+                                <span lang="de" xml:lang="de">Andere Probleme</span>
+                            </h3>
+                            <span class="pull-right"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                        </div>
+                        <div class="panel-body">
+                            <p lang="en" xml:lang="en">
+                              Please don't hesitate to contact our <a target="_blank" href="http://support.clarin-d.de/mail/?queue=HZSK&amp;lang=en">Helpdesk</a> 
+                              if you encounter any problems that could not be solved on the help pages.
+                            </p>
+                            <p lang="de" xml:lang="de">
+                                Bitte zögern Sie nicht uns eine Nachricht über den <a target="_blank" href="http://support.clarin-d.de/mail/?queue=HZSK&amp;lang=de">Helpdesk</a> 
+                                zukommen zu lassen, falls es Probleme gibt, die sich nicht durch die Hilfeseiten lösen lassen.
+                            </p>
+                        </div>
+                    </div>
+                                        
+                    <div class="panel panel-default" id="feedback">
+                        <div class="panel-heading clickable">
+                            <h3 class="panel-title">
+                                <span lang="en" xml:lang="en">Feedback</span>
+                                <span lang="de" xml:lang="de">Feedback</span>
+                            </h3>
+                            <span class="pull-right"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                        </div>
+                        <div class="panel-body">
+                            <p lang="en" xml:lang="en">
+                                If you have corrections or suggestions concerning the structure or contents of the HZSK Help Center, please contact us via the
+                                <a target="_blank" href="http://support.clarin-d.de/mail/?queue=HZSK&amp;lang=en">Helpdesk</a> or visit the 
+                                <a href="https://github.com/hzsk/hzsk-help-center">Github project of the HZSK Help Center</a> 
+                                (licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/legalcode">CC-BY-SA-4.0</a>). 
+                            </p>
+                            <p lang="de" xml:lang="de">
+                                Falls Sie Korrekturvorschläge oder Anmerkungen zur Struktur oder den Inhalten des HZSK Hilfecenter haben, schreiben Sie uns eine Nachricht über den
+                                <a target="_blank" href="http://support.clarin-d.de/mail/?queue=HZSK&amp;lang=de">Helpdesk</a> oder besuchen Sie das
+                                <a href="https://github.com/hzsk/hzsk-help-center">Github-Projekt des HZSK Hilfecenter</a> 
+                                (lizensiert unter <a href="https://creativecommons.org/licenses/by-sa/4.0/legalcode">CC-BY-SA-4.0</a>). 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+               
+                <!-- Tab: EXMARaLDA -->
+                <!--<div class="tab-pane fade" id="exmaralda">
+                    <h1 style="display:none;">EXMARaLDA FAQ</h1>
+
+                    <div class="panel panel-default" id="exmaralda-1">
+                        <div class="panel-heading clickable">
+                            <h3 class="panel-title">Question 1</h3>
+                            <span class="pull-right"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                        </div>
+                        <div class="panel-body">
+                            <p>...</p>   
+                        </div>
+                    </div>
+                </div>-->
+
+ 
+                <!-- Tab: Contact -->
+                <div class="tab-pane fade" id="contact">
+                    <h1 style="display:none;">
+                        <span lang="en" xml:lang="en">Contact</span>
+                        <span lang="de" xml:lang="de">Kontakt</span>
+                    </h1>
+                    
+                    <div class="panel panel-default" id="helpdesk">
+                        <div class="panel-heading clickable">
+                            <h3 class="panel-title">
+                                <span lang="en" xml:lang="en">Contact the Helpdesk</span>
+                                <span lang="de" xml:lang="de">Helpdesk kontaktieren</span>
+                            </h3>
+                            <span class="pull-right"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                        </div>
+                        <div class="panel-body">
+                            <p lang="en" xml:lang="en">Direct link to contact form: <a href="http://support.clarin-d.de/mail/?queue=HZSK&amp;lang=en" target="_blank">http://support.clarin-d.de/mail/</a></p>
+                            <p lang="de" xml:lang="de">Direkter Link zum Kontaktformular: <a href="http://support.clarin-d.de/mail/?queue=HZSK&amp;lang=de" target="_blank">http://support.clarin-d.de/mail/</a></p>
+                            <div lang="en" xml:lang="en">
+                                <iframe src="http://support.clarin-d.de/mail/?queue=HZSK&amp;lang=en" style="width: 100%; height: 650px; border: none;"></iframe>
+                            </div>
+                            <div lang="de" xml:lang="de">
+                                <iframe src="http://support.clarin-d.de/mail/?queue=HZSK&amp;lang=de" style="width: 100%; height: 650px; border: none;"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+        
+        function getParameterByName(name, url) {
+             if (!url) url = window.location.href;
+             name = name.replace(/[\[\]]/g, '\\$&');
+             var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                 results = regex.exec(url);
+             if (!results) return null;
+             if (!results[2]) return '';
+             return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+        
+        /* analyze GET parameter for language, and set body's lang attribute accordingly */
+        var language = getParameterByName('lang');
+        document.querySelector('body').setAttribute('lang', language);
+        document.querySelector('body').setAttribute('xml:lang', language);
+        </script>
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+        
+		function analyzeHash(){
+			/* analyze URL for hopping to requested subsection directly */
+			var hash = window.location.hash.substr(1);
+				
+			  /* if hash is present in URL, that means a subsection is requested */
+			if(null!=hash && hash!=''){
+
+				 var tabButton = $('ul.nav-pills').children('li').children('a[href="#'+hash+'"]');
+				 
+				 /* if hash refers to major topic (there must be an a[data-toggle=tab]) */
+				 if(tabButton.length > 0){
+				   /* close all tabs */
+				   $('.tab-pane').removeClass('active in');
+
+				   /* open major topic */
+				   $(tabButton).tab('show');
+					 
+				 }
+				 
+				 /* if no major topic was referred to by hash, it must be a subtopic  */
+				 else{
+				   console.log('Hash: "'+hash+'"');
+				   var requestedDiv = $('#'+hash);
+				 
+				   /* open parent panel */
+				   var parentPanel = $('#'+hash).parent();
+				   console.log("parentPanel");
+				   console.log(parentPanel);
+	 
+				   if(!parentPanel.hasClass('active')){ 
+					  $('ul.nav-pills').children('li').removeClass('active');
+					  $('ul.nav-pills').children('li').has('a[href="#'+$(parentPanel).attr('id')+'"]').addClass('active');
+					  $('.tab-pane').removeClass('active in');
+					  parentPanel.addClass('active in');
+				   }
+				 
+				   /* collapse all other subsections */
+				   $(parentPanel).children('div').each(function(i) { 
+					 var $this = $(this);
+					 if(!$this.hasClass('panel-collapsed') && $this.attr('id')!=hash){
+						$this.children('.panel-body').css("display", "none");
+						$this.addClass('panel-collapsed');
+						$this.find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+					 }
+				   });
+	  
+				   /* expand requested entry */
+				   $(requestedDiv).each(function(i) { 
+					 var $this = $(this);
+					 if(!$this.hasClass('panel-collapsed')){
+						$this.children('.panel-body').css("display", "block");
+						$this.addClass('panel-collapsed');
+						$this.find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+					 }
+				   });
+				}  
+			}
+		}
+		
+        $(function() {
+   
+          /* analyze URL for hash, and change display of subsections if present*/
+		  analyzeHash();
+ 
+          $(document).on('click', '.panel div.clickable', function (e) {
+             var $this = $(this);
+             if (!$this.hasClass('panel-collapsed')) {
+			    /* collapse section */
+                $this.parents('.panel').find('.panel-body').slideUp();
+                $this.addClass('panel-collapsed');
+                $this.find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+             } else {
+			    /* expand section */
+                $this.parents('.panel').find('.panel-body').slideDown();
+                $this.removeClass('panel-collapsed');
+                $this.find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+             }
+           });
+
+           $(window).bind( 'hashchange', function(e) {
+              analyzeHash();
+           });
+        });
+        </script>
+    </body>
+</html>

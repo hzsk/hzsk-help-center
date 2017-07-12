@@ -1,0 +1,15 @@
+README for project "HZSK Help Center"
+
+License
+	This project is licensed under the Creative Commons Attribution-ShareAlike 4.0 International Public License (see https://creativecommons.org/licenses/by-sa/4.0/legalcode or the contents of the file LICENSE)
+
+Project description
+	The "HZSK Help Center" is a one-page HTML/CSS/JavaScript web application.
+	It provides a FAQ-style information base for users of the HZSK Repository (https://corpora.uni-hamburg.de/repository).
+
+	The contents of the help pages are multlingual (currently German and English). 
+	Switching between languages is facilitated by a simple JavaScript mechanism.
+	The mechanism (clicking on language flags) triggers a change of the lang-attribute of the HTML body element which in turn results in a change of the display of elements marked with corresponding lang-attributes themselves.
+	The display of elements with specified lang-attributes is mostly controlled by the CSS declarations, which for instance hide elements *[@lang='de'] inside a body[@lang='en'] and vice versa.
+
+	The general structure and dynamic appearance (tabs and accordion views) are controlled by Bootstrap CSS.
